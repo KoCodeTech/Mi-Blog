@@ -5,23 +5,27 @@ import { Navbar } from "./Navbar.jsx";
 import { Sidebar } from "./Sidebar.jsx";
 import { Footer } from "./Footer.jsx";
 import { ContentCard } from "./ContentCard.jsx";
+import kitsuneLogo from "./assets/kitsuneLogo.svg";
+import map from "./assets/map.svg";
+import coffem from "./assets/coffem.svg";
+import kitsunecolor from "./assets/kitsunecolor.svg";
 
 const infoCardsData = [
   {
-    portada: "src/assets/kitsuneLogo.svg",
+    portada: kitsuneLogo,
     tituloPortada: "Titulo de la portada",
     descripcionPortada: "Descripción de la portada",
     linkTo: "/content/1",
   },
   {
-    portada: "src/assets/map.svg",
+    portada: map,
     tituloPortada: "Titulo de la portada 2 ahora mas largo",
     descripcionPortada:
       "Descripción de la portada 2 ahora mas largo para ver como se comporta el texto",
     linkTo: "/content/2",
   },
   {
-    portada: "src/assets/coffem.svg",
+    portada: coffem,
     tituloPortada: "Titulo de la portada 3 ahora mas largo",
     descripcionPortada:
       "Descripción de la portada 3 ahora mas largo para ver como se comporta el texto",
@@ -32,13 +36,8 @@ const infoCardsData = [
 function App() {
   return (
     <Router>
-      <Navbar
-        logoImg="src/assets/kitsunecolor.svg"
-        NombreDelBlog="Mi Blog"
-      ></Navbar>
-
+      <Navbar logoImg={kitsunecolor} NombreDelBlog="Mi Blog" />
       <Sidebar />
-
       <Routes>
         <Route
           path="/"
@@ -58,11 +57,7 @@ function App() {
         />
         <Route path="/content/:id" element={<ContentCard />} />
       </Routes>
-
-      <Footer
-        logoImg="src/assets/kitsuneLogo.svg"
-        NombreDelBlog="Mi Blog"
-      ></Footer>
+      <Footer logoImg={kitsuneLogo} NombreDelBlog="Mi Blog" />
     </Router>
   );
 }
