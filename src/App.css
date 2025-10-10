@@ -130,3 +130,9 @@ footer {
   text-overflow: ellipsis; /* Agrega puntos suspensivos al texto excedente */
   height: 48px; /* Limita la altura para mostrar solo dos líneas */
 }
+
+.info-aside {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
