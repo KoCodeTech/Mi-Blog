@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+#root {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* Navbar, contenido principal, Footer */
+  grid-template-columns: 250px 1fr; /* Sidebar y contenido principal */
+  grid-template-areas:
+    "navbar navbar"
+    "sidebar content"
+    "footer footer";
+}
+
+nav {
+  grid-area: navbar; /* Navbar ocupa toda la fila superior */
+  z-index: 10; /* Asegura que esté por encima del contenido */
+}
+
+#default-sidebar {
+  grid-area: sidebar; /* Sidebar ocupa la primera columna */
+  height: 100%; /* Asegura que ocupe todo el alto del contenido */
+  position: relative; /* Evita que se superponga */
+  z-index: 1; /* Debajo del Navbar */
+}
+
+footer {
+  grid-area: footer; /* Footer ocupa toda la fila inferior */
+  z-index: 10; /* Asegura que esté por encima del contenido */
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Info Card */
+
+.info-cards-container {
+  grid-area: content; /* Contenido principal ocupa la segunda columna */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-card {
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: left;
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #383737;
+  width: 300px;
+  height: 465px;
+  justify-content: space-between; /* Espaciado uniforme */
+  overflow: hidden; /* Oculta el contenido que exceda el tamaño */
+}
+
+.img-portada {
+  width: 252px;
+  height: 252px;
+  object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+  overflow: hidden; /* Oculta el contenido excedente */
+}
+
+.titulo-portada {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+  position: relative;
+  display: inline-block;
+  width: 100%; /* Asegura que el ancho del contenedor sea fijo */
+}
+
+.titulo-portada:hover {
+  animation: scroll-text 7s linear infinite; /* Activa la animación al pasar el mouse */
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(0); /* Comienza desde la posición inicial */
+  }
+  100% {
+    transform: translateX(-100%); /* Desplaza el texto completamente hacia la izquierda */
+  }
+}
+
+.descripcion-portada {
+  font-size: 1rem;
+  color: #ccc;
+  overflow: hidden; /* Oculta el texto excedente */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos al texto excedente */
+  height: 48px; /* Limita la altura para mostrar solo dos líneas */
+}
