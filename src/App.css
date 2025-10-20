@@ -133,6 +133,29 @@ footer {
 
 .info-aside {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   margin-top: 1rem;
+}
+
+/* Estilos para el componente Game */
+.game-container {
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.play-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.play-button {
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
