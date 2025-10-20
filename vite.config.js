@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: "/", // Configura la base para despliegue en subruta si es necesario
+  base: "/Mi-Blog/", // Configura la base para despliegue en subruta si es necesario
   build: {
     rollupOptions: {
       output: {
