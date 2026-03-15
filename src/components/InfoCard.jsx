@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useLoadSvgs } from "./hooks/useLoadSvgs.jsx";
+import { useLoadSvgs } from "../hooks/useLoadSvgs.jsx";
 
 /* Componente InfoCard que muestra una tarjeta de información con imagen, título, descripción y un enlace */
 

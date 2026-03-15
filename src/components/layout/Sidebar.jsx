@@ -42,7 +42,7 @@ const Icon = ({ name, className }) => {
         className={`shrink-0 w-5 h-5 ${className}`}
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
-        viewBox="0 0 20 20"
+        viewBox={icon.viewBox || "0 0 20 20"}
       >
         <path d={icon} />
       </svg>
@@ -70,19 +70,19 @@ const Icon = ({ name, className }) => {
 {
   /* Componente Sidebar */
 }
-export function Sidebar() {
+export function Sidebar({ notificaciones }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const baseLinkClasses =
     "flex items-center p-2 rounded-lg group text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
 
   const links = [
-    { to: "/", label: "Inicio", icon: "home" },
-    { to: "/novedades", label: "Novedades", icon: "novedades", count: 5 },
-    { to: "/productos", label: "Productos", icon: "productos" },
-    { to: "/usuario", label: "Usuario", icon: "usuario" },
-    { to: "/iniciar-sesion", label: "Iniciar Sesión", icon: "login" },
-    { to: "/registrarse", label: "Registrarse", icon: "register" },
+    { to: "/Mi-Blog/", label: "Inicio", icon: "home" },
+    { to: "/novedades/", label: "Novedades", icon: "novedades" },
+    { to: "/productos/", label: "Productos", icon: "productos" },
+    { to: "/usuario/", label: "Usuario", icon: "usuario" },
+    { to: "/iniciar-sesion/", label: "Iniciar Sesión", icon: "login" },
+    { to: "/registrarse/", label: "Registrarse", icon: "register" },
   ];
 
   return (
@@ -92,6 +92,7 @@ export function Sidebar() {
         onClick={() => setIsOpen(!isOpen)}
         className="sm:hidden p-2 text-gray-500 max-w-xs fixed top-4 left-4 z-50 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         aria-label="Toggle Sidebar"
+        aria-expanded={isOpen}
       >
         <svg
           className="w-6 h-6"
@@ -144,9 +145,10 @@ export function Sidebar() {
                       />
 
                       <span className="ms-3">{link.label}</span>
-                      {link.count && (
-                        <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                          {link.count}
+                      {/* Mostrar el contador dinámico para "Novedades" */}
+                      {link.label === "Novedades" && notificaciones?.length > 0 && (
+                        <span className="inline-flex items-center justify-center w-5 h-5 ms-3 text-xs font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                          {notificaciones.length}
                         </span>
                       )}
                     </>

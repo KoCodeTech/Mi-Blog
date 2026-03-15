@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useLoadSvgs } from "./hooks/useLoadSvgs.jsx";
+import { useLoadSvgs } from "../hooks/useLoadSvgs.jsx";
 
 export function ContentCard() {
   const { id } = useParams();
@@ -24,12 +24,12 @@ export function ContentCard() {
   // Obtener el contenido correspondiente al id
   const content = contentData[id] || {
     title: "Contenido no encontrado",
-    image: "./assets/images/no-image.svg",
+    image: "../assets/images/no-image.svg",
   };
 
   // Asegurar valores por defecto para title e image
   const title = content.title || "Título no disponible";
-  const image = svgs[content.image] || svgs["./assets/images/no-image.svg"];
+  const image = svgs[content.image] || svgs["../assets/images/no-image.svg"];
 
   if (isLoading) {
     return (

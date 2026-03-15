@@ -1,32 +1,40 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, Suspense, lazy } from "react";
-import "./App.css";
-import { InfoCard } from "./InfoCard.jsx";
-import { Navbar } from "./Navbar.jsx";
-import { Sidebar } from "./Sidebar.jsx";
-import { Footer } from "./Footer.jsx";
-import { ContentCard } from "./ContentCard.jsx";
-import ErrorBoundary from "./ErrorBoundary.jsx"; // Importa el Error Boundary
+import "./styles/App.css";
+import { InfoCard } from "./components/InfoCard.jsx";
+import { Navbar } from "./components/layout/Navbar.jsx";
+import { Sidebar } from "./components/layout/Sidebar.jsx";
+import { Footer } from "./components/layout/Footer.jsx";
+import { ContentCard } from "./components/ContentCard.jsx";
+import { Novedades } from "./pages/Novedades.jsx";
+import ErrorBoundary from "./components/layout/ErrorBoundary.jsx"; // Importa el Error Boundary
 
 // Cargar el componente Game dinámicamente
-const Game = lazy(() => import("./Game.jsx"));
+const Game = lazy(() => import("./components/Game.jsx"));
 
 function App() {
   const [showGame, setShowGame] = useState(false); // Estado para controlar si se muestra el juego
 
+  const [notificaciones, setNotificaciones] = useState([
+    "• Nueva Funcionalidad: Modo Oscuro ⚫",
+    "• Actualización del Contenido: Nuevos Artículos Publicados 📬",
+    "• Mejoras en el Rendimiento del Sitio Web 🏃‍♂️",
+  ]);
+
   return (
     <Router>
       <Navbar
-        logoImg="/assets/kitsunecolor.svg"
+        logoImg="./assets/kitsunecolor.svg"
         NombreDelBlog="Mi Blog"
       ></Navbar>
 
-      <Sidebar />
+      {/* Sidebar original, visible en todas las rutas */}
+      <Sidebar notificaciones={notificaciones} />
 
       <Routes>
         {/* Página principal */}
         <Route
-          path="/"
+          path="/Mi-Blog/"
           element={
             <div className="main-container">
               <div className="info-cards-container">
@@ -83,10 +91,21 @@ function App() {
             </div>
           }
         />
+
+        {/* Página de novedades */}
+        <Route
+          path="/novedades/"
+          element={
+            <Novedades
+              notificaciones={notificaciones}
+              setNotificaciones={setNotificaciones}
+            />
+          }
+        />
       </Routes>
 
       <Footer
-        logoImg="/assets/kitsunecolor.svg"
+        logoImg="./assets/kitsunecolor.svg"
         NombreDelBlog="Mi Blog"
       ></Footer>
     </Router>
